@@ -1,0 +1,134 @@
+#top-section {
+  color: white;
+  font-size: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 60px);
+  text-align: center;
+}
+
+#dashboard a {
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+#dashboard h1 {
+  margin-top: 15px;
+  font-size: 32px;
+}
+
+#top-section #balance, #account, #withdrawal, #deposite {
+  background-color: rgba(12, 0, 138, 0.251);
+  box-shadow: 10px 10px 10px black;
+  padding-top: 10px;
+  font-size: 23px;
+  margin: 0px 5px;
+}
+
+#top-section #balance:hover {
+  background-color: rgb(21, 0, 138);
+  background-image: linear-gradient(to right, red, black);
+  box-shadow: 20px 20px 50px black;
+  transition: all 400ms linear;
+}
+
+#top-section #account:hover {
+  background-color: rgb(21, 0, 138);
+  box-shadow: 20px 20px 50px black;
+  background-image: linear-gradient(to right, red, black);
+  transition: all 400ms linear;
+}
+
+#top-section #withdrawal:hover {
+  background-color: rgb(21, 0, 138);
+  background-image: linear-gradient(to right, red, black);
+  box-shadow: 20px 20px 50px black;
+  transition: all 400ms linear;
+}
+
+#top-section #deposite:hover {
+  background-color: rgb(21, 0, 138);
+  background-image: linear-gradient(to right, red, black);
+  box-shadow: 20px 20px 50px black;
+  transition: all 400ms linear;
+}
+
+
+#top-section .icon {
+  margin: 0px 5px;
+  font-size: 30px;
+  color: rgb(0, 170, 255);
+}
+
+
+
+
+#dashboard #games-section {
+  background-color: rgba(23, 10, 97, 0.600);
+  color: white;
+  box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.079);
+  border-radius: 20px;
+  padding: 30px 20px;
+  height: auto;
+  width: 95%;
+  margin: 30px auto;
+  text-align: center;
+
+}
+
+#dashboard img {
+  width: 60%;
+  height: 320px;
+  border-radius: 20px;
+  margin-top: 20px;
+
+}
+
+#dashboard .btn {
+  margin: 20px;
+  width: 60%;
+  font-size: 18px;
+}
+
+#dashboard .btn:hover {
+  background-image: linear-gradient(to right, red, black);
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+  #top-section {
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 60px);
+    text-align: center;
+  }
+
+  #top-section #balance, #account, #withdrawal, #deposite {
+    background-color: rgba(12, 0, 138, 0.251);
+    padding-top: 12px;
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  #dashboard h1 {
+    margin-top: 30px;
+    font-size: 25px;
+  }
+
+  #dashboard img {
+    width: 90%;
+    height: 160px;
+    border-radius: 5px;
+  }
+
+  #dashboard .btn {
+    margin: 20px;
+    width: 80%;
+  }
+
+
+}

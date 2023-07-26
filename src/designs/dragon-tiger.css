@@ -1,0 +1,91 @@
+
+
+#dragon-tiger {
+    padding: 20px 20px 5px;
+    margin-top: 20px;
+    background-color: rgba(6, 6, 68, 0.485);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 180px);
+    grid-gap:10px;
+}
+
+#dragon-tiger #dragon,#tie, #tiger {
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.666);
+    border-radius: 10px;
+    height: 170px;
+    position: relative;
+}
+
+#dragon-tiger #dragon:hover {
+    background-image: linear-gradient(to right, black, rgb(0, 47, 255), black);
+    cursor: pointer;
+}
+
+#dragon-tiger #tie:hover {
+    background-image: linear-gradient(to right, black, rgb(242, 255, 0), black);
+    cursor: pointer;
+}
+
+
+#dragon-tiger #tiger:hover {
+    background-image: linear-gradient(to right, black, rgb(255, 0, 13), black);
+    cursor: pointer;
+}
+
+#dragon-tiger h5 {
+    background-image: linear-gradient(to right, rgba(27, 114, 255, 0.831), black);
+    padding: 10px 5px;
+    border-radius: 10px 10px 0px 0px;
+    margin: 0px 0px 5px;
+    font-size: 15px;
+}
+
+#dragon-tiger h4 {
+    font-size: 19px;
+}
+
+
+#bet-coin {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 50px);
+    grid-gap:20px;
+    background-color: rgba(0, 0, 0, 0.227);
+    box-shadow: 20px 20px 25px rgb(0, 0, 0);
+    padding: 30px 20px;
+}
+
+#bet-coin span {
+    background-image: linear-gradient(to right, black, rgb(0, 170, 255), black);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    color: rgb(213, 17, 17);
+    font-size: 22px;
+    border-radius: 3rem;
+    padding: 10px 0px;
+    font-weight: bold;
+}
+
+
+#bet-coin span:hover {
+    background-image: linear-gradient(to right, black, rgb(255, 0, 13), black);
+    cursor: pointer;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+
+    #bet-coin span {
+        font-size: 17px;
+        border-radius: 50%;
+        padding: 10px 10px;
+        background-image: linear-gradient(to right, black, rgb(0, 170, 255), black);
+    }
+
+    #dragon-tiger h4 {
+        font-size: 15px;
+    }
+}

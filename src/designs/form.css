@@ -1,0 +1,83 @@
+
+
+#register-fom {
+    background-color: rgba(0, 0, 0, 0.59);
+    width: 50%;
+    margin: 50px auto;
+    padding: 20px 40px;
+    border-radius: 50px 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.332);
+    color: white;
+    text-align: center;
+}
+
+#register-fom h1 {
+    margin: 20px;
+    font-size: 23px;
+    text-align: center;
+}
+
+#register-fom label {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    margin: 15px 10px;
+    font-size: 19px;
+}
+
+#register-fom input ,select {
+    padding: 4px 10px;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid rgb(1, 21, 171);
+    border-radius: 5px;
+    color: rgb(250, 0, 0);
+    background: transparent;
+
+}
+
+#register-fom input[type="submit"] {
+    width: 80%;
+    text-align: center;
+    margin: 40px 0px;
+    background-image: linear-gradient(to right,black, rgb(47, 216, 21), black);
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    font-size: 20px;
+    color: white;
+}
+
+#register-fom p {
+    font-size: 19px;
+}
+
+#register-fom a {
+    color: rgb(92, 197, 0);
+    padding: 0px 5px;
+    text-decoration:none;
+    
+}
+
+
+
+  @media screen and (max-width: 768px) {
+   
+    #register-fom {
+        background-color: rgba(0, 0, 0, 0.59);
+        width: 95%;
+        height: auto;
+
+    }
+
+    #register-fom h1 {
+        margin: 20px;
+        font-size: 19px;
+        text-align: center;
+    }
+
+    #register-fom p {
+        font-size: 12px;
+    }
+
+  
+  }
