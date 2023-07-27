@@ -33,7 +33,6 @@ export const PUT = async (req,{params}) => {
     return new NextResponse(
         JSON.stringify({
           success: false,
-          admission,
           message: "Password does not password",
         }),
         {
