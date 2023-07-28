@@ -7,8 +7,9 @@ import { redirect, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import useSWR from "swr";
-const AddCashCD = ({rowdata, mutate,setDup}) => {
-
+const AddCashCD = ({rowdata, mutateD,setDup}) => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const {  mutate  } = useSWR(`/api/auth/me`, fetcher);
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState(null);
   const [ds, setDs] = useState(rowdata?.DStatus);
@@ -47,8 +48,8 @@ console.log(ds);
 
         // setloading(false);
         
+        mutateD()
         mutate()
-
         setMsg(data.message);
         setDup(false)
       }

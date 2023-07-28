@@ -185,6 +185,9 @@ const page = () => {
     setRowdata(rd)
     setDup(true)
   }
+  const mutateD=()=>{
+    mutate()
+  }
   console.log(data);
   const rows = [
     
@@ -213,7 +216,7 @@ const page = () => {
     <>
      <div id='my-profile'>
     {
-      dup && <AddCashCD  rowdata={rowdata} mutate={mutate} setDup={setDup} />
+      dup && <AddCashCD  rowdata={rowdata} mutateD={mutateD} setDup={setDup} />
     }
     {
       !dup &&<> <StripedDataGrid

@@ -146,6 +146,9 @@ console.log(data);
     setRowdata(rd)
     setDup(true)
   }
+  const mutateW=()=>{
+    mutate()
+  }
   console.log(data);
   const rows = [
     
@@ -171,7 +174,7 @@ console.log(data);
     <>
      <div id='my-profile'>
     {
-      dup && <WithdrawCD  rowdata={rowdata} mutate={mutate} setDup={setDup} />
+      dup && <WithdrawCD  rowdata={rowdata} mutateW={mutateW} setDup={setDup} />
     }
     {
       !dup &&<> <StripedDataGrid

@@ -6,8 +6,10 @@ import '@/designs/form.css'
 import { redirect, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
-
-const WithdrawCD = ({rowdata, mutate,setDup}) => {
+import useSWR from "swr";
+const WithdrawCD = ({rowdata, mutateW,setDup}) => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const {  mutate} = useSWR(`/api/deposit/controldeposit`, fetcher);
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState(null);
   const [ds, setDs] = useState(rowdata?.WStatus);
@@ -45,7 +47,7 @@ console.log(ds);
       if (data.success === true) {
 
         // setloading(false);
-        
+        mutateW()
         mutate()
         setMsg(data.message);
         setDup(false)
