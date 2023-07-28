@@ -4,7 +4,6 @@ import Deposit from "@/models/Deposit";
 import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
 import { authOptions } from "../../auth/[...nextauth]/route";
-import User from "@/models/User";
 
 
 export const PUT = async (request) => {

@@ -3,12 +3,11 @@ import '@/designs/table.css'
 import { DataGrid, GridToolbar ,gridClasses} from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
-import DeleteIcon from "@mui/icons-material/Delete";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+
 import { alpha, styled } from '@mui/material/styles';
 import { useState } from "react";
 import useSWR from "swr";
-// import Loadings from "./loading";
+
 import Link from "next/link";
 import AddCashCD from '@/components/AddCashCD/AddCashCD';
 const ODD_OPACITY = 0.2;
@@ -54,6 +53,9 @@ const StripedDataGrid = styled(DataGrid)(({ theme }) => ({
 const page = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, mutate, error, isLoading } = useSWR(`/api/deposit/controldeposit`, fetcher);
+
+
+  // const {  } = useSWR(`/api/auth/me`, fetcher);
   const [dup, setDup] = useState(false)
   const [rowdata, setRowdata] = useState();
 
@@ -140,8 +142,8 @@ const page = () => {
       sortable: false,
       width: 120,
       renderCell: (params) => [
-        <Button variant="standard" onClick={() => hupdateId(params.row)}>
-          <EditIcon color="primary" />
+        <Button variant="standard" onClick={() => hupdateId(params.row)} disabled={params.row.DStatus === "Successful" || params.row.DStatus === "Cancelled"} >
+          <EditIcon style={params.row.DStatus === "Successful" || params.row.DStatus === "Cancelled"?{color:"gray"}:{color:"skyblue"}} />
         </Button>,
       ],
     },

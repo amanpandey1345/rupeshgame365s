@@ -1,55 +1,41 @@
 import { getServerSession } from "next-auth";
-
+import { authOptions } from "../auth/[...nextauth]/route";
 import Deposit from "@/models/Deposit";
 import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import Bet from "@/models/Bet";
 import User from "@/models/User";
 
+export const POST = async (request) => {
+    const session = await getServerSession(authOptions)
 
-export const PUT = async (request) => {
-
-  const session = await getServerSession(authOptions)
      
     await dataBase();
-
     let uf = await User.findById(session?.user.id);
-    const {DStatus ,id} = await request.json();
-    let user = await Deposit.findById(id);
-    const newBalance = uf.balance + user.DAmount;
-    if (!user) {
-      return new NextResponse(
-        JSON.stringify({
-          success: false,
-          message: "Sorry!!, diposit is not Found",
-        }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-    }
+
+    
+    const userId=session?.user.id;
+    const {BetAmount,BetOn} = await request.json();
+    const newBalance = uf.balance - BetAmount;
 
   try {
-    user = await Deposit.findByIdAndUpdate(id, { DStatus }, {
-      new: true,
-      runValidators: true,
-      useFindAndModify: false,
-    });
+    let newUser =  new Bet({
+      BetAmount,BetOn,userId
+      });
+    
+    await newUser.save();
 
-    if(DStatus === "Successful"){
 
       uf = await User.findByIdAndUpdate(session?.user.id, { balance:newBalance }, {
         new: true,
         runValidators: true,
         useFindAndModify: false,
       });
-    }
 
     return new NextResponse(
       JSON.stringify({
         success: true,
-        message: "desposit has been Update",
+        message: "Bet has been created",
       }),
       {
         status: 201,
@@ -73,9 +59,9 @@ export const PUT = async (request) => {
 
 export const GET = async (request) => {
 
-
+    const session = await getServerSession(authOptions)
     await dataBase();
-    const getDeposit = await Deposit.find().populate("userId");
+    const getBet = await Bet.findById({userId:session.data.user.id});
     
   
     
@@ -84,7 +70,7 @@ export const GET = async (request) => {
       return new NextResponse(
         JSON.stringify({
           success: true,
-          getDeposit,
+          getBet,
           message: "  get deposit successfully",
         }),
         {

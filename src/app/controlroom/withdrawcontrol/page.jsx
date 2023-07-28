@@ -135,8 +135,8 @@ console.log(data);
       sortable: false,
       width: 120,
       renderCell: (params) => [
-        <Button variant="standard" onClick={() => hupdateId(params.row)}>
-          <EditIcon color="primary" />
+        <Button variant="standard" onClick={() => hupdateId(params.row)} disabled={params.row.WStatus === "Successful" || params.row.WStatus === "Cancelled"} >
+          <EditIcon style={params.row.WStatus === "Successful" || params.row.WStatus === "Cancelled"?{color:"gray"}:{color:"skyblue"}} />
         </Button>,
       ],
     },

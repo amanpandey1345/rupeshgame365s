@@ -1,13 +1,17 @@
-
 import User from "@/models/User";
 import dataBase from "@/utils/dataBase";
+import { authOptions } from "../[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import { NextResponse } from "next/server";
 
-export const GET = async (request,{params}) => {
+export const GET = async (request) => {
 
-    const {id} = params
+
+  const session = await getServerSession(authOptions)
     await dataBase();
-    const me = await User.findById(id);
-    console.log(me);
+
+    const me = await User.findById(session?.user.id);
+
     
   
     

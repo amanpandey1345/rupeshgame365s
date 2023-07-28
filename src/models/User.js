@@ -31,11 +31,12 @@ const userSchema = new mongoose.Schema(
         type: String,
         default: "user",
       },
-      // createdBy:{
-      //   type: String,
-      //   required: [true, "Please enter createdby name"],
+      balance: {
+        type: Number,
+        default: 0,
+        
+      },
 
-      // },
       resetPasswordToken: String,
       resetPasswordExpire: Date,
       loginToken: String,

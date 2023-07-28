@@ -12,6 +12,7 @@ const MyProfile = () => {
         <center><h3 className='text-red-700'> My Profile </h3> <br />
         </center>
       </div>
+      {/* /api/auth/me GET  */}
     </>
   )
 }

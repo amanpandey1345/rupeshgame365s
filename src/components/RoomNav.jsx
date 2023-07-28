@@ -9,9 +9,11 @@ import { MdAccountCircle } from "react-icons/md";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import Link from 'next/link';
 import {useSession} from "next-auth/react";
-
+import useSWR from "swr";
 
 const RoomNav = () => {
+    const fetcher = (...args) => fetch(...args).then((res) => res.json());
+    const { data, mutate, error, isLoading } = useSWR(`/api/auth/me`, fetcher);
     const pathname = usePathname()
     const session = useSession()
     const fpturl = "/controlroom"
@@ -24,7 +26,7 @@ const RoomNav = () => {
         {
           paths.includes(pathname)?  
           <section id='top-section'>
-                <div id='balance'> <Link style={{textDecoration: "none", color:"white"}} href="/controlroom/balancecontrol"><MdOutlineAccountBalanceWallet className='icon' /> ₹ 50.00 </Link> </div>
+                <div id='balance'> <Link style={{textDecoration: "none", color:"white"}} href="/controlroom/balancecontrol"><MdOutlineAccountBalanceWallet className='icon' /> {data?.me ? `₹ ${data?.me.balance}` : "loading..." }</Link> </div>
                 <div id='account'> <Link style={{textDecoration: "none", color:"white"}} href="/controlroom/myprofile"> <MdAccountCircle className='icon' />  {session?.data?.user ? session?.data?.user.name : "loading..." } </Link> </div>
                 <div id='withdrawal'> <Link style={{textDecoration: "none", color:"white"}} href="/controlroom/withdrawcontrol"> <BiMoneyWithdraw className='icon' />  Withdraw Control</Link> </div>
                 <div id='deposite'> <Link style={{textDecoration: "none", color:"white"}} href="/controlroom/addcashcontrol"> <BsCashCoin className='icon' />  Add Cash Control </Link> </div>

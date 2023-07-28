@@ -4,7 +4,7 @@ import { NextResponse } from "next/server"
 export default withAuth(
     // `withAuth` augments your `Request` with the user's token.
     function middleware(request) {
-        console.log(request.nextUrl.pathname)
+        // console.log(request.nextUrl.pathname)
         // console.log(request.nextauth.token)
 
         if (request.nextUrl.pathname.startsWith("/controlroom")

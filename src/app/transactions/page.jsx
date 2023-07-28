@@ -12,6 +12,8 @@ const Transactions = () => {
         <center><h3> Our Transactions </h3> <br />
         </center>
       </div>
+      {/* api/deposit Get  */}
+      {/* api/withdraw Get  */}
     </>
   )
 }

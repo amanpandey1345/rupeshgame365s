@@ -3,17 +3,19 @@ import { authOptions } from "../../auth/[...nextauth]/route";
 import Withdraw from "@/models/Withdraw";
 import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
+import User from "@/models/User";
 
 
 export const PUT = async (request) => {
  
     await dataBase();
 
-
+    const session = await getServerSession(authOptions)
     const {WTranscationDateTime,WStatus,WUTRid,id} = await request.json();
   
-
+    let uf = await User.findById(session?.user.id);
     let user = await Withdraw.findById(id);
+    const newBalance = uf.balance - user.WAmount;
     if (!user) {
       return new NextResponse(
         JSON.stringify({
@@ -32,6 +34,16 @@ export const PUT = async (request) => {
       runValidators: true,
       useFindAndModify: false,
     });
+
+    if(WStatus === "Successful"){
+
+      uf = await User.findByIdAndUpdate(session?.user.id, { balance:newBalance }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false,
+      });
+    }
+
 
     return new NextResponse(
       JSON.stringify({
