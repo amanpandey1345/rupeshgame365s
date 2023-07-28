@@ -9,7 +9,7 @@ import React, { useState } from "react";
 import useSWR from "swr";
 const WithdrawCD = ({rowdata, mutateW,setDup}) => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const {  mutate} = useSWR(`/api/deposit/controldeposit`, fetcher);
+  const {  mutate} = useSWR(`/api/auth/me`, fetcher);
   const [error, setError] = useState(null);
   const [msg, setMsg] = useState(null);
   const [ds, setDs] = useState(rowdata?.WStatus);
