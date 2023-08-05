@@ -1,5 +1,3 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
 import Withdraw from "@/models/Withdraw";
 import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
@@ -10,11 +8,11 @@ export const PUT = async (request) => {
  
     await dataBase();
 
-    const session = await getServerSession(authOptions)
+
     const {WTranscationDateTime,WStatus,WUTRid,id} = await request.json();
   
-    let uf = await User.findById(session?.user.id);
     let user = await Withdraw.findById(id);
+    let uf = await User.findById(user.userId);
     const newBalance = uf.balance - user.WAmount;
     if (!user) {
       return new NextResponse(
@@ -37,7 +35,7 @@ export const PUT = async (request) => {
 
     if(WStatus === "Successful"){
 
-      uf = await User.findByIdAndUpdate(session?.user.id, { balance:newBalance }, {
+      uf = await User.findByIdAndUpdate(user.userId, { balance:newBalance }, {
         new: true,
         runValidators: true,
         useFindAndModify: false,
@@ -48,7 +46,7 @@ export const PUT = async (request) => {
     return new NextResponse(
       JSON.stringify({
         success: true,
-        message: "desposit has been created",
+        message: "Withdrawl has been updated",
       }),
       {
         status: 201,

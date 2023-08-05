@@ -5,8 +5,8 @@ const betactiveSchema = new Schema(
 
 
     Status:{
-        type: ,
-        default:"Pending"
+        type: Boolean,
+        default:true
     }, 
    
   },

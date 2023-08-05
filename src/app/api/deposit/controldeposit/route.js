@@ -1,21 +1,19 @@
-import { getServerSession } from "next-auth";
-
 import Deposit from "@/models/Deposit";
 import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
-import { authOptions } from "../../auth/[...nextauth]/route";
+
 import User from "@/models/User";
 
 
 export const PUT = async (request) => {
 
-  const session = await getServerSession(authOptions)
+
      
     await dataBase();
 
-    let uf = await User.findById(session?.user.id);
     const {DStatus ,id} = await request.json();
     let user = await Deposit.findById(id);
+    let uf = await User.findById(user.userId);
     const newBalance = uf.balance + user.DAmount;
     if (!user) {
       return new NextResponse(
@@ -39,7 +37,7 @@ export const PUT = async (request) => {
 
     if(DStatus === "Successful"){
 
-      uf = await User.findByIdAndUpdate(session?.user.id, { balance:newBalance }, {
+      uf = await User.findByIdAndUpdate(user.userId, { balance:newBalance }, {
         new: true,
         runValidators: true,
         useFindAndModify: false,
