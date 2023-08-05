@@ -1,0 +1,38 @@
+
+
+#transactions {
+    padding: 30px 20px;
+    background-color: rgba(1, 44, 104, 0.39);
+    margin: 30px 20px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+#transactions #box {
+    background-color: rgb(34, 61, 119);
+    box-shadow: 8px 8px 8px black;
+    border-radius: 5px;
+    width: 400px;
+    color: black;
+    padding: 10px;
+    text-align: center;
+    line-height: 30px;
+    margin: 10px 0px;
+}
+
+#transactions h4 {
+    margin: 20px 10px;
+}
+
+#transactions h6 {
+    margin: 15px 0px;
+}
+
+#transactions span {
+    color: rgb(179, 179, 179);
+    margin: 0px 20px;
+}

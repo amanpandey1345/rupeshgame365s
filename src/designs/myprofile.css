@@ -1,0 +1,23 @@
+
+#my-profile {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(1, 44, 104, 0.39);
+    text-align: center;
+}
+
+#my-profile h2 {
+    color: rgb(175, 175, 175);
+    margin-top: 30px;
+}
+
+
+#my-profile h3 {
+    color: rgb(255, 255, 255);
+    font-size: 21px;
+
+}
+
+#my-profile hr {
+    color: white;
+}

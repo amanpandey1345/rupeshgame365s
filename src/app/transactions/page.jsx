@@ -1,16 +1,16 @@
 "use client";
-// import Header from '@/components/Header'
-// import Nav from '@/components/Nav'
 import '@/designs/service-center.css'
 import '@/designs/dashboard.css'
 import Link from 'next/link'
 import { useState } from 'react';
-import useSWR from "swr";
+
+import WithdrawGET from '@/components/WithdrawGET/WithdrawGET';
+import AddCashGET from '@/components/AddCashGET/AddCashGET';
 
 const Transactions = () => {
   const [show, setShow] = useState(false)
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, mutate, error, isLoading } = useSWR(`/api/auth/me`, fetcher);
+ 
+
 
   return (
     <>
@@ -27,34 +27,18 @@ const Transactions = () => {
 
 {
   show &&
-<>
-        <div className="cardt">
-          UTR id:
-          DMobile
-          DPaymentMethod
-          DAmount
-          DStatusDTranscationDateTime
-        </div>
-        </>
 
+<AddCashGET/>
 }
 {
   !show &&
 
-        <div className="cardt">
-          UTR id:
-          WMobile
-          WPaymentMethod
-          WAmount
-          WStatusDTranscationDateTime
-
-        </div>
+  <WithdrawGET/>
 
 }
         </div>
       </div>
-      {/* api/deposit Get  */}
-      {/* api/withdraw Get  */}
+
     </>
   )
 }

@@ -49,8 +49,9 @@ export const POST = async (request) => {
 export const GET = async (request) => {
 
     const session = await getServerSession(authOptions)
+    const userId=session?.user.id;
     await dataBase();
-    const getWithdraw = await Withdraw.findById({userId:session.data.user.id});
+    const getWithdraw = await Withdraw.find({userId}).populate("userId");
     
   
     

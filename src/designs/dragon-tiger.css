@@ -5,6 +5,8 @@
     margin-top: 20px;
     background-color: rgba(6, 6, 68, 0.485);
     display: grid;
+    /* justify-items: center; */
+    /* align-items: center; */
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(1, 180px);
     grid-gap:10px;
@@ -57,6 +59,14 @@
     box-shadow: 20px 20px 25px rgb(0, 0, 0);
     padding: 30px 20px;
 }
+#bet-btn {
+    background-color: rgba(0, 0, 0, 0.227);
+    box-shadow: 20px 20px 25px rgb(0, 0, 0);
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
 
 #bet-coin span {
     background-image: linear-gradient(to right, black, rgb(0, 170, 255), black);
@@ -68,9 +78,24 @@
     padding: 10px 0px;
     font-weight: bold;
 }
+#bet-btn span {
+    background-image: linear-gradient(to right, black, green, black);
+    text-align: center;
+    color: rgb(0, 0, 0);
+    color: rgb(213, 17, 17);
+    font-size: 22px;
+    border-radius: 3rem;
+    padding: 4px 30px;
+    font-weight: bold;
+}
 
 
 #bet-coin span:hover {
+    background-image: linear-gradient(to right, black, rgb(255, 0, 13), black);
+    cursor: pointer;
+    color: white;
+}
+#bet-btn span:hover {
     background-image: linear-gradient(to right, black, rgb(255, 0, 13), black);
     cursor: pointer;
     color: white;
