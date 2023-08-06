@@ -1,6 +1,4 @@
-import { getServerSession } from "next-auth";
 
-import Deposit from "@/models/Deposit";
 import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
 import Bet from "@/models/Bet";
@@ -66,22 +64,6 @@ export const PUT = async (request) => {
     const gba = await BetActive.findByIdAndUpdate(getBetActive[0]._id,{$set:{Status:true}},{new: true,runValidators: true,useFindAndModify: false})
 
 
-    // let uf = await User.findById(id);
-    // // const {DStatus ,id} = await request.json();
-    // let user = await Deposit.findById(id);
-    // const newBalance = uf.balance + user.DAmount;
-    // if (!user) {
-    //   return new NextResponse(
-    //     JSON.stringify({
-    //       success: false,
-    //       message: "Sorry!!, diposit is not Found",
-    //     }),
-    //     {
-    //       status: 400,
-    //       headers: { "Content-Type": "application/json" },
-    //     }
-    //   );
-    // }
 
   try {
 
@@ -91,20 +73,6 @@ export const PUT = async (request) => {
     }
 
     setTimeout(betActive, 1000*60)
-    // user = await Deposit.findByIdAndUpdate(id, { DStatus }, {
-    //   new: true,
-    //   runValidators: true,
-    //   useFindAndModify: false,
-    // });
-
-    // if(DStatus === "Successful"){
-
-    //   uf = await User.findByIdAndUpdate(id, { balance:newBalance }, {
-    //     new: true,
-    //     runValidators: true,
-    //     useFindAndModify: false,
-    //   });
-    // }
 
     return new NextResponse(
       JSON.stringify({
@@ -139,37 +107,37 @@ export const PUT = async (request) => {
 };
 
 
-export const GET = async (request) => {
+// export const GET = async (request) => {
 
 
-    await dataBase();
-    const getDeposit = await Deposit.find().populate("userId");
+//     await dataBase();
+//     const getDeposit = await Deposit.find().populate("userId");
     
   
     
   
-    try {
-      return new NextResponse(
-        JSON.stringify({
-          success: true,
-          getDeposit,
-          message: "  get deposit successfully",
-        }),
-        {
-          status: 200,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-    } catch (err) {
-      return new NextResponse(
-        JSON.stringify({
-          success: false,
-          message: err.message,
-        }),
-        {
-          status: 500,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-    }
-  };
+//     try {
+//       return new NextResponse(
+//         JSON.stringify({
+//           success: true,
+//           getDeposit,
+//           message: "  get deposit successfully",
+//         }),
+//         {
+//           status: 200,
+//           headers: { "Content-Type": "application/json" },
+//         }
+//       );
+//     } catch (err) {
+//       return new NextResponse(
+//         JSON.stringify({
+//           success: false,
+//           message: err.message,
+//         }),
+//         {
+//           status: 500,
+//           headers: { "Content-Type": "application/json" },
+//         }
+//       );
+//     }
+//   };
