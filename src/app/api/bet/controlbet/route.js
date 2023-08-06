@@ -72,7 +72,7 @@ export const PUT = async (request) => {
       await BetActive.findByIdAndUpdate(getBetActive[0]._id,{$set:{Status:false}},{new: true,runValidators: true,useFindAndModify: false})
     }
 
-    setTimeout(betActive, 150000)
+    setTimeout(betActive, 150000) 
 
     return new NextResponse(
       JSON.stringify({
