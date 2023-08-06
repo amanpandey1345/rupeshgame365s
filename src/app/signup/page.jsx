@@ -4,8 +4,9 @@ import Link from 'next/link'
 import { redirect, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import React, { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 const Signup = () => {
-  const [error, setError] = useState(null);
+
 
   const router = useRouter();
   const session = useSession();
@@ -39,18 +40,20 @@ const Signup = () => {
       const data = await res.json()
       console.log(res);
       if (data.success === true) {
-
+        toast.success("Login Successfully ...");
         // setloading(false);
         router.push("/login");
       }
       if (data.success === false) {
         // setloading(false);
-        setError(data.message);
+
+        toast.error(data.message);
       }
     } catch (err) {
-      setError(err.message);
+      toast.error(err.message);
+
       // setloading(false);
-      console.log(err.message);
+
     }
   };
   return (
@@ -79,11 +82,12 @@ const Signup = () => {
         </form>
         <div  style={{color:"red"}}  >
 
-        {error && `${error}`} 
+
         </div>
 
         <p>Already have an account / <Link href="/login"> Login </Link> </p> 
         </>}
+        <Toaster />
       </div>
     </>  
   )

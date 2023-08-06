@@ -3,9 +3,9 @@ const { Schema } = mongoose;
 const bethistorySchema = new Schema(
   {
 
-    BetStatus:{
-        type: Boolean,
-        default:false
+    BetWin:{
+        type: String,
+        
     }, 
    
   },

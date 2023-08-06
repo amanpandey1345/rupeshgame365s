@@ -5,12 +5,27 @@ import dataBase from "@/utils/dataBase";
 import { NextResponse } from "next/server";
 import Bet from "@/models/Bet";
 import User from "@/models/User";
+import BetActive from "@/models/BetActive";
 
 export const POST = async (request) => {
     const session = await getServerSession(authOptions)
 
      
     await dataBase();
+    const getBet = await BetActive.find();
+    console.log(getBet[0].Status);
+    if(!getBet[0].Status){
+      return new NextResponse(
+        JSON.stringify({
+          success: false,
+          message: "Sorry Betting is Closed!!!",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" }, 
+        }
+      );
+    }
     let uf = await User.findById(session?.user.id);
 
     
@@ -21,7 +36,7 @@ export const POST = async (request) => {
     if(uf.balance <= BetAmount){
       return new NextResponse(
         JSON.stringify({
-          success: true,
+          success: false,
           message: "Sorry Balance is low!!!",
         }),
         {
@@ -49,7 +64,7 @@ export const POST = async (request) => {
     return new NextResponse(
       JSON.stringify({
         success: true,
-        message: "Bet has been created",
+        message: "Bet done successfully ",
       }),
       {
         status: 201,
@@ -105,3 +120,4 @@ export const GET = async (request) => {
       );
     }
   };
+  

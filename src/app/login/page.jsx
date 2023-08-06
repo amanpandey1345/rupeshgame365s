@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import "@/designs/form.css";
 import { useRouter, redirect, useSearchParams } from "next/navigation";
-
+import toast, { Toaster } from 'react-hot-toast';
 import { signIn, useSession } from "next-auth/react";
 import React, { useEffect, useState } from "react";
 const Login = () => {
@@ -17,9 +17,16 @@ const Login = () => {
     setUrl(params.get("callbackUrl"));
     setError(params.get("error"));
     setSuccess(params.get("success"));
+      if(error){
+    toast.error(error);
+  }
+  if(success){
+    toast.success(success);
+  }
   }, [params]);
 
   // console.log(url);
+
 
   if (session.status === "authenticated") {
     url ? redirect(url) : redirect("/");
@@ -68,7 +75,6 @@ const Login = () => {
         </center>
       </form>
       <div className="text-red-700" style={{ color: "red" }}>
-        {error && `${error}`}
       </div>
 
       <p>
@@ -78,6 +84,7 @@ const Login = () => {
         Forget an account password / <Link href="/forgetpassword"> Forget Password </Link>
       </p>
       </>}
+      <Toaster />
     </div>
   );
 };

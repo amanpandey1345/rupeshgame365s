@@ -6,7 +6,7 @@ import Link from 'next/link';
 // import Nav from '@/components/Nav';
 // import Header from '@/components/Header';
 import Music from '@/components/Music';
-
+import toast, { Toaster } from 'react-hot-toast';
 
 const Dashboard = () => {
   return (
@@ -23,6 +23,7 @@ const Dashboard = () => {
         </section>
 
       </div>
+      <Toaster />
     </>
   )
 }
