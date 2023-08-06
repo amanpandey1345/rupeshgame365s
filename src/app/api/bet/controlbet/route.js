@@ -7,9 +7,9 @@ import BetActive from "@/models/BetActive";
 
 
 
-export const GET = async (request) => {
+export const PUT = async (request) => {
 
-  
+
      
     await dataBase();
 
@@ -72,7 +72,7 @@ export const GET = async (request) => {
       await BetActive.findByIdAndUpdate(getBetActive[0]._id,{$set:{Status:false}},{new: true,runValidators: true,useFindAndModify: false})
     }
 
-    setTimeout(betActive, 1000*60)
+    setTimeout(betActive, 150000)
 
     return new NextResponse(
       JSON.stringify({
@@ -105,3 +105,39 @@ export const GET = async (request) => {
     );
   }
 };
+
+
+export const GET = async (request) => {
+
+
+    await dataBase();
+    const getDeposit = await Deposit.find().populate("userId");
+    
+  
+    
+  
+    try {
+      return new NextResponse(
+        JSON.stringify({
+          success: true,
+          getDeposit,
+          message: "  get deposit successfully",
+        }),
+        {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    } catch (err) {
+      return new NextResponse(
+        JSON.stringify({
+          success: false,
+          message: err.message,
+        }),
+        {
+          status: 500,
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+  };
