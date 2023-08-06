@@ -9,7 +9,7 @@ import BetActive from "@/models/BetActive";
 
 export const GET = async (request) => {
 
-
+  
      
     await dataBase();
 
