@@ -14,8 +14,22 @@ export const POST = async (request) => {
     let uf = await User.findById(session?.user.id);
 
     
+    
     const userId=session?.user.id;
     const {BetAmount,BetOn} = await request.json();
+    // console.log(uf.balance > BetAmount)
+    if(uf.balance <= BetAmount){
+      return new NextResponse(
+        JSON.stringify({
+          success: true,
+          message: "Sorry Balance is low!!!",
+        }),
+        {
+          status: 400,
+          headers: { "Content-Type": "application/json" }, 
+        }
+      );
+    }
     const newBalance = uf.balance - BetAmount;
 
   try {

@@ -9,17 +9,21 @@ import tiger from '@/images/tiger.png'
 import tie from '@/images/tie.png'
 import Music from '@/components/Music'
 import { redirect, useRouter } from 'next/navigation'
-
+import toast, { Toaster } from 'react-hot-toast';
+import useSWR from "swr";
 
 const DragonTiger = () => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { mutate} = useSWR(`/api/auth/me`, fetcher);
   const router = useRouter();
   const [amount, setAmount] = useState(0)
   const [betOn, setBetOn] = useState()
+  // const [error,setError] = useStart(null)
   const handleSubmit = async (e) => {
     e.preventDefault();
 
 
-
+    
     try {
       const res = await fetch("/api/bet", {
         method: "POST",
@@ -35,19 +39,24 @@ const DragonTiger = () => {
       console.log(res);
       console.log(data);
       if (data.success === true) {
-        redirect("/")
+        // redirect("/")
+        toast.success(data.message);
+        mutate()
+        router.push("/")
         // setloading(false);
-        setError(data.message);
+
       }
       if (data.success === false) {
         // setloading(false);
         console.log(data);
-        setError(data.message);
+        // setError(data.message);
+        toast.error(data.message);
       }
     } catch (err) {
-      setError(err.message);
+      // setError(err.message);
+      toast.error(err.message);
       // setloading(false);
-      console.log(err.message);
+      // console.log(err.message);
     }
   };
   
@@ -102,10 +111,11 @@ const DragonTiger = () => {
       {
         betOn && 
             <section id='bet-btn'>
-            <span onClick={()=>handleSubmit()}>Bet</span>
+            <span onClick={(e)=>handleSubmit(e)}>Bet</span>
        
         </section>
             }
+                 <Toaster />
     </>
   )
 }
