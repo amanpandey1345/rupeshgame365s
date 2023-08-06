@@ -7,7 +7,7 @@ import BetActive from "@/models/BetActive";
 
 
 
-export const PUT = async (request) => {
+export const GET = async (request) => {
 
 
      
