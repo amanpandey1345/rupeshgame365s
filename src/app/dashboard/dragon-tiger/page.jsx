@@ -80,7 +80,7 @@ const DragonTiger = () => {
         // redirect("/")
         toast.success(data0.message);
         mutate()
-        router.push("/")
+        //router.push("/")
         // setloading(false);
 
       }
@@ -93,7 +93,7 @@ const DragonTiger = () => {
         // redirect("/")
         toast.success(data1.message);
         mutate()
-        router.push("/")
+       // router.push("/")
         // setloading(false);
 
       }
