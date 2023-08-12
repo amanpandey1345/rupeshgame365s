@@ -98,8 +98,7 @@ const DragonTiger = () => {
 
       }
       if (data1.success === false) {
-        // setloading(false);
-        // setError(data.message);
+     
         toast.error(data1.message);
       }
       if (data2.success === true) {
