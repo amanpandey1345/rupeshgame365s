@@ -16,20 +16,20 @@ const DragonTiger = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { mutate} = useSWR(`/api/auth/me`, fetcher);
   const router = useRouter();
-  const [amountT, handleamountT] = useState(0)
+  const [amountT, setAmountT] = useState(0)
   const [betOn, setBetOn] = useState()
-  const [amountTA, handleamountTA] = useState(0)
-  const [amountD, handleamountD] = useState(0)
+  const [amountTA, setAmountTA] = useState(0)
+  const [amountD, setAmountD] = useState(0)
   
   const handleamount = (a) => {
     if (betOn ==="tiger"){
-      handleamountT(amountT+a)
+      setAmountT(amountT+a)
     }
     if (betOn ==="tie"){
-      handleamountTA(amountTA+a)
+      setAmountTA(amountTA+a)
     }
     if (betOn ==="dragon"){
-      handleamountD(amountD+a)
+      setAmountD(amountD+a)
     }
   }
   // const [error,setError] = useStart(null)
