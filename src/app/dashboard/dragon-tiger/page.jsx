@@ -82,43 +82,43 @@ const data2 = await res2.json()
       
       
       
-      if (data0.success === true) {
+      if (data0?.success === true) {
         // redirect("/")
-        toast.success(data0.message);
+        toast.success(data0?.message);
         mutate()
         //router.push("/")
         // setloading(false);
 
       }
-      if (data0.success === false) {
+      if (data0?.success === false) {
         // setloading(false);
         // setError(data.message);
-        toast.error(data0.message);
+        toast.error(data0?.message);
       }
-      if (data1.success === true) {
+      if (data1?.success === true) {
         // redirect("/")
-        toast.success(data1.message);
+        toast.success(data1?.message);
         mutate()
        // router.push("/")
         // setloading(false);
 
       }
-      if (data1.success === false) {
+      if (data1?.success === false) {
      
-        toast.error(data1.message);
+        toast.error(data1?.message);
       }
-      if (data2.success === true) {
+      if (data2?.success === true) {
         // redirect("/")
-        toast.success(data2.message);
+        toast.success(data2?.message);
         mutate()
         router.push("/")
         // setloading(false);
 
       }
-      if (data2.success === false) {
+      if (data2?.success === false) {
         // setloading(false);
         // setError(data.message);
-        toast.error(data2.message);
+        toast.error(data2?.message);
       }
     } catch (err) {
       // setError(err.message);
