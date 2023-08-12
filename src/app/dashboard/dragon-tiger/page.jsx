@@ -37,7 +37,7 @@ const DragonTiger = () => {
     e.preventDefault();
 
 
-    
+          
     try {
       if (amountT){
       const res0 = await fetch("/api/bet", {
