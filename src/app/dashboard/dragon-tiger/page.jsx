@@ -49,7 +49,9 @@ const DragonTiger = () => {
           BetOn:"tiger",
           BetAmount:amountT
         }),
-      })};
+      })
+const data0 = await res0.json()
+};
       if (amountD){
       const res1 = await fetch("/api/bet", {
         method: "POST",
@@ -60,7 +62,9 @@ const DragonTiger = () => {
           BetOn:"dragon",
           BetAmount:amountD
         }),
-      })};
+      })
+const data1 = await res1.json()
+};
       if (amountTA){
       const res2 = await fetch("/api/bet", {
         method: "POST",
@@ -71,11 +75,13 @@ const DragonTiger = () => {
           BetOn:"tie",
           BetAmount:amountTA
         }),
-      })};
+      })
+const data2 = await res2.json()
+};
 
-      const data0 = await res0.json()
-      const data1 = await res1.json()
-      const data2 = await res2.json()
+      
+      
+      
       if (data0.success === true) {
         // redirect("/")
         toast.success(data0.message);
