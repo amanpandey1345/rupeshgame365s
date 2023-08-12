@@ -91,42 +91,30 @@ data1 = await res1.json()
       
       
       if (data0?.success === true) {
-        // redirect("/")
         toast.success(data0?.message);
-        mutate()
-        //router.push("/")
-        // setloading(false);
-
       }
       if (data0?.success === false) {
-        // setloading(false);
-        // setError(data.message);
         toast.error(data0?.message);
       }
       if (data1?.success === true) {
-        // redirect("/")
         toast.success(data1?.message);
-        mutate()
-       // router.push("/")
-        // setloading(false);
-
       }
       if (data1?.success === false) {
-     
         toast.error(data1?.message);
       }
       if (data2?.success === true) {
-        // redirect("/")
         toast.success(data2?.message);
-        mutate()
-        router.push("/")
-        // setloading(false);
-
       }
       if (data2?.success === false) {
-        // setloading(false);
-        // setError(data.message);
         toast.error(data2?.message);
+      }
+
+if (data0?.success === true || data1?.success === true || data2?.success === true) {
+       
+        mutate()
+        router.push("/")
+       
+
       }
     } catch (err) {
       // setError(err.message);
