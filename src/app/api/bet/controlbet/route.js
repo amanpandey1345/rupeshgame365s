@@ -67,13 +67,6 @@ export const PUT = async (request) => {
 
   try {
 
-    async function betActive () {
-      console.log("hello");
-      await BetActive.findByIdAndUpdate(getBetActive[0]._id,{$set:{Status:false}},{new: true,runValidators: true,useFindAndModify: false})
-    }
-
-    setTimeout(betActive, 150000) 
-
     return new NextResponse(
       JSON.stringify({
         success: true,
@@ -111,7 +104,8 @@ export const GET = async (request) => {
 
 
     await dataBase();
-    const getDeposit = await Deposit.find().populate("userId");
+        const getBetActive = await BetActive.find(); 
+     const gba = await BetActive.findByIdAndUpdate(getBetActive[0]._id,{$set:{Status:false}},{new: true,runValidators: true,useFindAndModify: false})
     
   
     
@@ -120,8 +114,8 @@ export const GET = async (request) => {
       return new NextResponse(
         JSON.stringify({
           success: true,
-          getDeposit,
-          message: "  get deposit successfully",
+          gba,
+          message: "  get BetActive successfully",
         }),
         {
           status: 200,
