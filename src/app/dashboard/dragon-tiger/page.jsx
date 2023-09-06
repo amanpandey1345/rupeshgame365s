@@ -141,6 +141,10 @@ if (data0?.success === true || data1?.success === true || data2?.success === tru
           <Image src={tie} width={100} height={100} alt="" className='Tieint'  />
           <Image src={Cardbg} width={100} height={100} alt="" className='Tigerint'/>
         </div>
+        <div className="Sint">
+          <span className='Sb'>{betOn?.toUpperCase()}</span>
+          <span className='SAmt'>₹ {amountD +amountTA+amountT}</span>
+        </div>
       </div> 
       <section id='dragon-tiger'> 
 
