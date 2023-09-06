@@ -143,8 +143,7 @@ if (data0?.success === true || data1?.success === true || data2?.success === tru
         </div>
       </div> 
       <section id='dragon-tiger'> 
-        {
-          betOn === "dragon" || !betOn ?
+
        
         <div id='dragon' onClick={()=>setBetOn("dragon")} >
           <h5>{amountD ?`₹ ${amountD}`:"₹ 000.00"}</h5>
@@ -169,6 +168,11 @@ if (data0?.success === true || data1?.success === true || data2?.success === tru
         </div>
 
       </section>
+
+      {
+           
+                  betOn  &&
+ 
      
       <section id='bet-coin'>
           <span onClick={()=>handleamount(10)}>10</span>
@@ -180,8 +184,8 @@ if (data0?.success === true || data1?.success === true || data2?.success === tru
           <span onClick={()=>handleamount(1000)}>1000</span>
           <span onClick={()=>handleamount(2000)}>2000</span>
       </section>
-      
-      
+           }
+       
             <section id='bet-btn'>
             <span onClick={(e)=>handleSubmit(e)}>Bet</span>
        
