@@ -1,8 +1,0 @@
-{
-    "crons": [
-        {
-            "path": "/api/bet/controlbet",
-            "schedule": "*/10 * * * *"   
-        }  
-    ]
-}
