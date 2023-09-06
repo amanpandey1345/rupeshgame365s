@@ -130,7 +130,6 @@ if (data0?.success === true || data1?.success === true || data2?.success === tru
       {/* <Nav /> */}
       <Results />
       <Music />
-<<<<<<< HEAD
 
       <div className="Inters">
         <div className="Tint">
@@ -147,10 +146,6 @@ if (data0?.success === true || data1?.success === true || data2?.success === tru
         {
           betOn === "dragon" || !betOn ?
        
-=======
-      <section id='dragon-tiger'>
-        
->>>>>>> 3e496676122c75cce54e2242779accbc5d65d6c3
         <div id='dragon' onClick={()=>setBetOn("dragon")} >
           <h5>{amountD ?`₹ ${amountD}`:"₹ 000.00"}</h5>
           <Image src={dragon} width={100} height={100} alt='dragon-img' />
