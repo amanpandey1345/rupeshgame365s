@@ -65,7 +65,7 @@ export const PUT = async (request) => {
 
 
 
-  try {
+  try {  
 
     async function betActive () {
       console.log("hello");

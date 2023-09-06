@@ -5,6 +5,7 @@ import '@/designs/dragon-tiger.css'
 import Results from '@/components/Results'
 import Image from 'next/image'
 import dragon from '@/images/dragon.png'
+import Cardbg from '@/images/Cardbg.png' 
 import tiger from '@/images/tiger.png'
 import tie from '@/images/tie.png'
 import Music from '@/components/Music'
@@ -65,7 +66,19 @@ const DragonTiger = () => {
       {/* <Nav /> */}
       <Results />
       <Music />
-      <section id='dragon-tiger'>
+
+      <div className="Inters">
+        <div className="Tint">
+          00:00
+        </div>
+        <div className="Cint">
+          <Image src={Cardbg} width={100} height={100} alt="" className='Dragonint' />
+          {/* <div className="Tieint"></div> */}
+          <Image src={tie} width={100} height={100} alt="" className='Tieint'  />
+          <Image src={Cardbg} width={100} height={100} alt="" className='Tigerint'/>
+        </div>
+      </div> 
+      <section id='dragon-tiger'> 
         {
           betOn === "dragon" || !betOn ?
        
