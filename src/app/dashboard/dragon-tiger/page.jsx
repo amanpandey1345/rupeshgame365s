@@ -15,7 +15,7 @@ import useSWR from "swr";
 import io from "socket.io-client";  
  
 
-let socket = io("http://localhost:4000");
+let socket = io("https://cron-job-365.onrender.com");
 socket.emit("join_room", 12122);
 
 const DragonTiger = () => {
