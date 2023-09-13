@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "@/designs/dragon-tiger.css";
 import Results from "@/components/Results";
 import Image from "next/image";
@@ -12,6 +12,11 @@ import Music from "@/components/Music";
 import { redirect, useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import useSWR from "swr";
+import io from "socket.io-client";  
+ 
+
+let socket = io("http://localhost:4000");
+socket.emit("join_room", 12122);
 
 const DragonTiger = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -21,6 +26,8 @@ const DragonTiger = () => {
   const [betOn, setBetOn] = useState();
   const [amountTA, setAmountTA] = useState(0);
   const [amountD, setAmountD] = useState(0);
+  const [gT, setGT] = useState("");
+  const [wB, setWB] = useState("");
 
   const handleamount = (a) => {
     if (betOn === "tiger") {
@@ -123,6 +130,32 @@ const DragonTiger = () => {
     }
   };
 
+  
+  useEffect(() => {
+
+    // socket.emit("setup", {id:1001});
+    // socket.on("connected", () => setSocketConnected(true));
+    socket.on("Game-Time",(T)=>{
+      setGT(T);
+    })
+    socket.on("Game-Win",(w)=>{
+      setWB(w)
+    })
+    // return () => {
+    //   socket.disconnect();
+    // };
+  }, [socket]);
+  
+
+  async function socketInitializer() {
+
+
+    // socket.on("receive-message", (data) => {
+    //   setAllMessages((pre) => [...pre, data]);
+    // });
+  }
+
+
   return (
     <>
       {/* <Nav /> */}
@@ -130,7 +163,7 @@ const DragonTiger = () => {
       <Music />
 
       <div className="Inters">
-        <div className="Tint">00:00</div>
+        <div className="Tint">{gT ?? "00:00"}</div>
         <div className="Cint">
           <Image
             src={Cardbg}

@@ -7,7 +7,10 @@ import Link from 'next/link';
 // import Header from '@/components/Header';
 import Music from '@/components/Music';
 import toast, { Toaster } from 'react-hot-toast';
+import io from "socket.io-client";  
+ 
 
+let socket;
 const Dashboard = () => {
   return (
     <>
